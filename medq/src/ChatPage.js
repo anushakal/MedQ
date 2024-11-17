@@ -11,6 +11,7 @@ const ChatPage = () => {
   const [inputText, setInputText] = useState(""); // State to store user input
   const [displayText, setDisplayText] = useState(""); // State to store displayed text
   const [summary, setSummary] = useState(""); // State to store the summary
+  const [highContrast, setHighContrast] = useState(false); // State to toggle high-contrast mode
 
   const handleInputChange = (event) => {
     setInputText(event.target.value); // Update inputText as the user types
@@ -32,6 +33,7 @@ const ChatPage = () => {
       const summarizedText = completion.choices[0].message.content;
       setSummary(summarizedText); // Set the summary as the displayed text
       setDisplayText(inputText); // Set the original inputText to displayText
+
     } catch (error) {
       console.error("Error while summarizing:", error);
       setSummary("Sorry, something went wrong while summarizing.");
@@ -40,10 +42,41 @@ const ChatPage = () => {
     setInputText(""); // Clear the input field after submission
   };
 
+  const toggleHighContrast = () => {
+    setHighContrast(!highContrast); // Toggle the high-contrast mode
+  };
+  
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div
+      style={{
+        textAlign: "center",
+        marginTop: "50px",
+        backgroundColor: highContrast ? "#000" : "#fff", // Background color change
+        color: highContrast ? "#fff" : "#000", // Text color change
+        transition: "all 0.3s ease", // Smooth transition for color change
+      }}
+    >
       <h1>Welcome to the Chat Page</h1>
       <p>This is where you can enter and display your summarized messages.</p>
+
+      {/* High Contrast Button */}
+      <button
+        onClick={toggleHighContrast}
+        style={{
+          padding: "10px 20px",
+          fontSize: "16px",
+          cursor: "pointer",
+          borderRadius: "5px",
+          backgroundColor: highContrast ? "#ff6600" : "#007BFF", // Toggle button color
+          color: "white",
+          border: "none",
+          marginBottom: "20px",
+        }}
+      >
+        High Contrast
+      </button>
+
+      {/* Input Text Box */}
       <div style={{ marginTop: "20px" }}>
         <input
           type="text"
@@ -55,7 +88,9 @@ const ChatPage = () => {
             padding: "10px",
             fontSize: "16px",
             borderRadius: "5px",
-            border: "1px solid #ccc",
+            border: highContrast ? "2px solid #fff" : "1px solid #ccc", // Input border color change
+            backgroundColor: highContrast ? "#333" : "#fff", // Input background change
+            color: highContrast ? "#fff" : "#000", // Input text color change
           }}
         />
         <button
@@ -66,7 +101,7 @@ const ChatPage = () => {
             fontSize: "16px",
             cursor: "pointer",
             borderRadius: "5px",
-            backgroundColor: "#007BFF",
+            backgroundColor: highContrast ? "#ff6600" : "#007BFF", // Button color change
             color: "white",
             border: "none",
           }}
@@ -86,14 +121,15 @@ const ChatPage = () => {
             borderRadius: "5px",
             width: "50%",
             margin: "20px auto",
-            backgroundColor: "#f9f9f9",
+            backgroundColor: highContrast ? "#333" : "#f9f9f9", // Display text background color change
+            color: highContrast ? "#fff" : "#000", // Text color change
           }}
         >
           <strong>Original Text:</strong> {displayText}
         </div>
       )}
 
-      {/*Display Summary */}
+      {/* Display Summary */}
       {summary && (
         <div
           style={{
@@ -104,7 +140,8 @@ const ChatPage = () => {
             borderRadius: "5px",
             width: "50%",
             margin: "20px auto",
-            backgroundColor: "#f9f9f9",
+            backgroundColor: highContrast ? "#333" : "#f9f9f9", // Summary text background change
+            color: highContrast ? "#fff" : "#000", // Text color change
           }}
         >
           <strong>Summary:</strong> {summary}
