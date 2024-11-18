@@ -59,7 +59,7 @@ const HomePage = () => {
         {/* Button for Messages, navigates to "middle" page */}
         <button 
           className="dashboard-button" 
-          onClick={() => navigate("/middle")}
+          onClick={() => navigate("/messages")}
           aria-label="Go to Messages page"
           // ARIA label to describe the button's action
         >

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const MiddlePage = () => {
+const Messages = () => {
   const navigate = useNavigate();
 
   return (
@@ -23,4 +23,4 @@ const MiddlePage = () => {
   );
 };
 
-export default MiddlePage;
+export default Messages;
