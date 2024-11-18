@@ -13,7 +13,7 @@ const ChatPage = () => {
   const [selectedChat, setSelectedChat] = useState(""); // Selected chat
   const [conversationHistory, setConversationHistory] = useState([]); // Conversation history between user and AI
   const [highContrast, setHighContrast] = useState(false); // High contrast mode
-  const [displayText, setDisplayText] = useState(""); // Original text for displaying
+
   
   // Handle input text change
   const handleInputChange = (event) => {
@@ -65,6 +65,30 @@ const ChatPage = () => {
       }
     };
 
+    // Handle summarizing a message
+    const handleSummarize = async (message, index) => {
+      try {
+        const completion = await openai.chat.completions.create({
+          model: "gpt-3.5-turbo",
+          messages: [
+            { role: "system", content: "Summarize the following message:" },
+            { role: "user", content: message },
+          ],
+        });
+
+        const summary = completion.choices[0].message.content;
+
+        setConversationHistory((prevHistory) =>
+          prevHistory.map((msg, i) =>
+            i === index ? { ...msg, summary } : msg
+          )
+        );
+      } catch (error) {
+        console.error("Error while summarizing message:", error);
+      }
+    };
+
+  
     return (
       <div
         style={{
@@ -142,66 +166,78 @@ const ChatPage = () => {
             </ul>
           </div>
   
-          {/* Right Pane (Chat Interface) */}
-          <div
-            style={{
-              flex: 1,
-              padding: "20px",
-              backgroundColor: highContrast ? "#000" : "#fff",
-              color: highContrast ? "#fff" : "#000",
-              overflowY: "auto",
-            }}
-          >
-            <p>
-              {selectedChat ? `You are chatting with ${selectedChat}` : "Please select a chat"}
-            </p>
-  
-            {/* Display Conversation History */}
-            <div>
-              {conversationHistory.map((msg, index) => (
-                <div key={index} style={{ marginBottom: "10px" }}>
-                  <strong>{msg.role}:</strong> {msg.content}
-                </div>
-              ))}
-            </div>
-  
-            {/* User Input and Send Button */}
-            <div style={{ marginTop: "20px" }}>
-              <input
-                type="text"
-                value={inputText}
-                onChange={handleInputChange}
-                placeholder="Type your message here"
-                style={{
-                  width: "300px",
-                  padding: "10px",
-                  fontSize: "16px",
-                  borderRadius: "5px",
-                  border: highContrast ? "2px solid #fff" : "1px solid #ccc",
-                  backgroundColor: highContrast ? "#333" : "#fff",
-                  color: highContrast ? "#fff" : "#000",
-                }}
-              />
-              <button
-                onClick={handleSendMessage}
-                style={{
-                  marginLeft: "10px",
-                  padding: "10px 20px",
-                  fontSize: "16px",
-                  cursor: "pointer",
-                  borderRadius: "5px",
-                  backgroundColor: highContrast ? "#ff6600" : "#007BFF",
-                  color: "white",
-                  border: "none",
-                }}
-              >
-                Send
-              </button>
-            </div>
+          {/* Right Pane */}
+        <div
+          style={{
+            flex: 1,
+            padding: "20px",
+            backgroundColor: highContrast ? "#000" : "#fff",
+            color: highContrast ? "#fff" : "#000",
+          }}
+        >
+          <p>{selectedChat ? `You are chatting with ${selectedChat}` : "Please select a chat"}</p>
+
+          {/* Display Conversation History */}
+          <div>
+            {conversationHistory.map((msg, index) => (
+              <div key={index} style={{ marginBottom: "20px" }}>
+                <strong>{msg.role}:</strong> {msg.content}
+                {msg.summary && (
+                  <p style={{ fontStyle: "italic", color: "#888" }}>Summary: {msg.summary}</p>
+                )}
+                <button
+                  onClick={() => handleSummarize(msg.content, index)}
+                  style={{
+                    marginTop: "5px",
+                    padding: "5px 10px",
+                    fontSize: "14px",
+                    borderRadius: "5px",
+                    backgroundColor: "#007BFF",
+                    color: "white",
+                    border: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  Summarize
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {/* User Input */}
+          <div style={{ marginTop: "20px" }}>
+            <input
+              type="text"
+              value={inputText}
+              onChange={handleInputChange}
+              placeholder="Type your message here"
+              style={{
+                width: "300px",
+                padding: "10px",
+                fontSize: "16px",
+                borderRadius: "5px",
+              }}
+            />
+            <button
+              onClick={handleSendMessage}
+              style={{
+                marginLeft: "10px",
+                padding: "10px 20px",
+                fontSize: "16px",
+                borderRadius: "5px",
+                backgroundColor: "#007BFF",
+                color: "white",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Send
+            </button>
           </div>
         </div>
       </div>
-    );
-  };
-  
-  export default ChatPage;  
+    </div>
+  );
+};
+
+export default ChatPage;
