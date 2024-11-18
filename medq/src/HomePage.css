@@ -1,0 +1,152 @@
+/* General Styling for Homepage*/
+.homepage-dashboard {
+  font-family: Arial, sans-serif; /*Font for the web page*/
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex; /*Flexbox Layout*/
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Styling for the Dashboard Header */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #007acc;
+  color: white;
+  border-bottom: 1px solid #ddd;
+}
+/* Title section of the dashboard header */
+.title-section {
+  flex: 3; /* The title section will take 3 parts of available space in responsive design */
+}
+
+/* Hospital title link styling */
+.hospital-title {
+  font-size: 20px;
+  margin: 0;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
+
+/* Hover and Focus styling for the hospital title */
+.hospital-title:focus,
+.hospital-title:hover {
+  text-decoration: underline;
+}
+
+/* Patient Profile Section */
+.patient-profile {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/*Styling for patient icon*/
+.patient-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/*Styling for patient name*/
+.patient-name {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Layout for the dashboard buttons */
+.dashboard-buttons {
+  width: 100%;
+  max-width: 500px; 
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Styling for individual dashboard buttons */
+.dashboard-button {
+  padding: 15px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007acc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover effect for buttons */
+.dashboard-button:hover {
+  background-color: #005fa3;
+}
+
+/* Footer Styling */
+.dashboard-footer {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+  padding-bottom: 20px; 
+}
+
+/* Styling for the High Contrast Button */
+.toggle-button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button.on {
+  background-color: #ffdd00;
+  color: #000;
+}
+
+.toggle-button.off {
+  background-color: #444;
+}
+
+.toggle-button:hover {
+  background-color: #222;
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+body.high-contrast .dashboard-button {
+  background-color: #ffdd00;
+  color: #000;
+}
+
+body.high-contrast .toggle-button {
+  background-color: #ffdd00;
+  color: #000;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .dashboard-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dashboard-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
