@@ -199,7 +199,22 @@ const Messages = () => {
                       )}
                       
                       {msg.summary && (
-                        <p className="summary-text">Summary: {msg.summary}</p>
+                        <>
+                          <p className="summary-text">Summary: {msg.summary}</p>
+                          <div className="feedback-container">
+                            {[1, 2, 3, 4, 5].map((value) => (
+                              <span
+                                key={value}
+                                className={`feedback-smiley ${
+                                  msg.feedback === value ? "selected" : ""
+                                }`}
+                                onClick={() => handleFeedback(index, value)}
+                              >
+                                {["😡", "☹️", "😐", "🙂", "😄"][value - 1]}
+                              </span>
+                            ))}
+                          </div>
+                        </>
                       )}
                     </div>
                   ))}
