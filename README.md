@@ -17,6 +17,7 @@ This document provides an overview of the current status and future plans for th
     * Ensured the UI is clean and intuitive to use.
 * **Home Page:**
     * Built a basic home page with a functional "Messages" button (other buttons are currently non-clickable placeholders).
+* As of now, the LLM tries to imitate a clinician’s response.
 
 ### 2. Future Steps (Design)
 
