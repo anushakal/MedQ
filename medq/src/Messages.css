@@ -1,0 +1,240 @@
+/* General Styling for Messages Page */
+.messages-dashboard {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Dashboard Header */
+  .dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #007acc;
+    color: white;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .title-section {
+    flex: 3;
+  }
+  
+  .hospital-title {
+    font-size: 20px;
+    margin: 0;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .hospital-title:focus,
+  .hospital-title:hover {
+    text-decoration: underline;
+  }
+  
+  .patient-profile {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .patient-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .patient-name {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  /* Messages Section Layout */
+    .messages-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Optional: controls space between columns */
+    padding-top: 0; /* Removes any extra padding at the top */
+    margin-top: 0; /* Removes margin from the top */
+  }
+  
+  /* Layout for Left and Right Columns */
+  .messages-layout {
+    margin-top: 0;
+    padding-top: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  /* Left Column: Chat List */
+ .chat-list {
+    width: 45%;
+    margin-top: 0; /* Ensures no margin on top */
+    padding-top: 0; /* Ensures no padding on top */
+    padding-bottom: 0; /* Ensures no padding at the bottom */
+  }
+  
+  .chat-list h2 {
+    margin-bottom: 10px;
+  }
+  
+  .chat-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .chat-list li {
+    padding: 10px;
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .chat-list li:hover {
+    background-color: #ddd;
+  }
+  
+  /* Right Column: Chat Details */
+  .chat-details {
+    margin-top: 0;
+    padding-top: 0;
+    width: 45%;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .chat-details h3 {
+    font-size: 18px;
+  }
+  
+  /* Back Button Styling */
+.back-button-container {
+    text-align: left; /* Align to the left */
+    margin: 10px 20px; /* Spacing around the button */
+  }
+  
+  .back-button {
+    background-color: #007acc; /* Matches header color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #005f99; /* Darker shade for hover */
+  }
+  
+  .back-button:focus {
+    outline: 2px solid #ffdd00; /* Highlight for accessibility */
+  }
+  
+  .chat-history {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+  }
+  
+  .chat-message {
+    margin: 5px 0;
+  }
+  
+  .user-message {
+    text-align: right;
+    color: blue;
+  }
+  
+  .ai-message {
+    text-align: left;
+    color: green;
+  }
+  
+  .chat-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .chat-input button {
+    padding: 10px 20px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .chat-input button:hover {
+    background-color: #005f99;
+  }
+
+  /* Footer Styling */
+  .dashboard-footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    padding-bottom: 20px; 
+  }
+  
+  /* High Contrast Mode Styles */
+  body.high-contrast {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  body.high-contrast .dashboard-button,
+  body.high-contrast .toggle-button {
+    background-color: #ffdd00;
+    color: #000;
+  }
+  
+  body.high-contrast .chat-list li {
+    background-color: #ffdd00;
+    color: #000;
+  }
+  
+  body.high-contrast .chat-details {
+    background-color: #444;
+    color: #fff;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .messages-layout {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .chat-list, .chat-details {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
