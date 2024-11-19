@@ -1,6 +1,6 @@
 # MedQ: AI-Powered Chat Summarization Tool
 
-## Project Status Update
+## Project Status Update (as of Nov 18, 2024)
 
 This document provides an overview of the current status and future plans for the AI-powered chat summarization tool.
 
