@@ -57,7 +57,7 @@ To get started with the project, follow these steps:
 
   git clone https://github.com/anushakal/MedQ.git
 
-**2. Navigate to medq folder**
+**2. Navigate to medq folder (Make sure you are in the folder MedQ/medq)** 
   
   cd medq
 
