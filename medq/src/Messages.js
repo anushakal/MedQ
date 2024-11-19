@@ -33,38 +33,50 @@ const Messages = () => {
     { name: "Dr. JKL", specialty: "Dermatologist" },
   ];
 
-  // Function to handle sending a message
   const sendMessage = async () => {
-    if (!userInput.trim()) return; // Prevent sending empty messages
+    if (!userInput.trim()) return;
 
     const newMessage = { sender: "user", text: userInput };
-    setMessages((prev) => [...prev, newMessage]); // Add user's message to chat history
-    setUserInput(""); // Clear input box
+    setMessages((prev) => [...prev, newMessage]);
+    setUserInput("");
 
     try {
-      // Call OpenAI API to get response
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
-          ...messages.map((msg) => ({ role: msg.sender === "user" ? "user" : "assistant", content: msg.text })),
+          ...messages.map((msg) => ({
+            role: msg.sender === "user" ? "user" : "assistant",
+            content: msg.text,
+          })),
           { role: "user", content: userInput },
         ],
       });
 
-      const aiMessage = { sender: "assistant", text: response.choices[0].message.content };
-      setMessages((prev) => [...prev, aiMessage]); // Add AI's response to chat history
+      const aiMessage = {
+        sender: "assistant",
+        text: response.choices[0].message.content,
+      };
+      setMessages((prev) => [...prev, aiMessage]);
     } catch (error) {
       console.error("Error fetching response from OpenAI:", error);
-      const errorMessage = { sender: "assistant", text: "Sorry, I couldn't process your message. Please try again." };
-      setMessages((prev) => [...prev, errorMessage]); // Show error message
+      const errorMessage = {
+        sender: "assistant",
+        text: "Sorry, I couldn't process your message. Please try again.",
+      };
+      setMessages((prev) => [...prev, errorMessage]);
     }
   };
 
   return (
     <div className="messages-dashboard">
+      {/* Dashboard Header */}
       <div className="dashboard-header">
         <div className="title-section">
-          <a href="/" className="hospital-title" aria-label="Go to the home page of XYZ Hospital">
+          <a
+            href="/"
+            className="hospital-title"
+            aria-label="Go to the home page of XYZ Hospital"
+          >
             XYZ Hospital
           </a>
         </div>
@@ -83,25 +95,29 @@ const Messages = () => {
 
       {/* Back Button */}
       <div className="back-button-container">
-        <button 
-          onClick={() => navigate(-1)} // Navigate to the previous page
-          className="back-button" 
+        <button
+          onClick={() => navigate(-1)}
+          className="back-button"
           aria-label="Go back to the previous page"
         >
           Back
         </button>
       </div>
 
+      {/* Messages Section */}
       <div className="messages-section">
         <div className="messages-layout">
           <div className="chat-list">
             <h2>Your Chats</h2>
             <ul>
               {chats.map((chat, index) => (
-                <li key={index} onClick={() => {
-                  setSelectedChat(chat);
-                  setMessages([]); // Reset messages for new chat
-                }}>
+                <li
+                  key={index}
+                  onClick={() => {
+                    setSelectedChat(chat);
+                    setMessages([]);
+                  }}
+                >
                   {chat.name} - {chat.specialty}
                 </li>
               ))}
@@ -111,12 +127,16 @@ const Messages = () => {
           <div className="chat-details">
             {selectedChat ? (
               <div>
-                <h3>Chat with {selectedChat.name}, {selectedChat.specialty}</h3>
+                <h3>
+                  Chat with {selectedChat.name}, {selectedChat.specialty}
+                </h3>
                 <div className="chat-history">
                   {messages.map((msg, index) => (
                     <p
                       key={index}
-                      className={`chat-message ${msg.sender === "user" ? "user-message" : "ai-message"}`}
+                      className={`chat-message ${
+                        msg.sender === "user" ? "user-message" : "ai-message"
+                      }`}
                     >
                       {msg.text}
                     </p>
@@ -139,6 +159,7 @@ const Messages = () => {
         </div>
       </div>
 
+      {/* Footer */}
       <footer className="dashboard-footer">
         <ToggleButton
           onClick={handleHighContrastToggle}
