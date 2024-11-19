@@ -102,6 +102,38 @@ const Messages = () => {
     );
   };
 
+  const summarizeWholeChat = async () => {
+    if (!isMedQEnabled) return; // Only works if MedQ is enabled
+
+    try {
+      const fullChat = messages.map((msg) => msg.text).join("\n");
+
+      const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+          { role: "system", content: "Summarize the entire conversation succinctly." },
+          { role: "user", content: fullChat },
+        ],
+      });
+
+      const summary = response.choices[0].message.content;
+
+      const smileys = ["😄", "🙂", "😐", "🙁", "😢"];
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "assistant",
+          text: "Chat Summary",
+          summary,
+          smileys,
+        },
+      ]);
+    } catch (error) {
+      console.error("Error summarizing whole chat:", error);
+    }
+  };
+
   return (
     <div className="messages-dashboard">
       {/* Dashboard Header */}
@@ -228,6 +260,11 @@ const Messages = () => {
                     placeholder="Type your message..."
                   />
                   <button onClick={sendMessage}>Send</button>
+                  {isMedQEnabled && (
+                    <button onClick={summarizeWholeChat}>
+                      Summarize Entire Chat
+                    </button>
+                  )}
                 </div>
               </div>
             ) : (
