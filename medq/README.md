@@ -37,19 +37,25 @@ CSS/SCSS: For styling the user interface, including high contrast mode.
  
 ## Setup Instructions
 To get started with the project, follow these steps:
+
 **1. Clone the Repository**
+
   git clone https://github.com/anushakal/MedQ.git
 
 **2. Navigate to medq folder**
+  
   cd medq
 
  **3. Paste the OpenAI key in the .env file**
+  
    Paste your Open AI key in the .env file
 
   **4. install npm packages.**
+   
     Open a new termimal in the medq folder  - npm install
 
   **5. Running the web app**
+    
     npm start
  
    
