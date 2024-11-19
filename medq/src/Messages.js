@@ -67,6 +67,30 @@ const Messages = () => {
     }
   };
 
+  const summarizeMessage = async (text, index) => {
+    try {
+      const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+          { role: "system", content: "Summarize the following text succinctly." },
+          { role: "user", content: text },
+        ],
+      });
+
+      const summary = response.choices[0].message.content;
+
+      setMessages((prev) =>
+        prev.map((msg, i) =>
+          i === index
+            ? { ...msg, summary }
+            : msg
+        )
+      );
+    } catch (error) {
+      console.error("Error summarizing message:", error);
+    }
+  };
+
   return (
     <div className="messages-dashboard">
       {/* Dashboard Header */}
@@ -132,16 +156,33 @@ const Messages = () => {
                 </h3>
                 <div className="chat-history">
                   {messages.map((msg, index) => (
-                    <p
-                      key={index}
-                      className={`chat-message ${
-                        msg.sender === "user" ? "user-message" : "ai-message"
-                      }`}
+                    <div
+                    key={index}
+                    className={`chat-message-container ${
+                      msg.sender === "user" ? "user-message-container" : "ai-message-container"
+                    }`}
                     >
-                      {msg.text}
-                    </p>
+                      <p
+                        className={`chat-message ${
+                          msg.sender === "user" ? "user-message" : "ai-message"
+                        }`}
+                      >
+                        {msg.text}
+                      </p>
+                      <button
+                        className="summarize-button"
+                        onClick={() => summarizeMessage(msg.text, index)}
+                      >
+                        Summarize
+                      </button>
+                      
+                      {msg.summary && (
+                        <p className="summary-text">Summary: {msg.summary}</p>
+                      )}
+                    </div>
                   ))}
                 </div>
+                
                 <div className="chat-input">
                   <input
                     type="text"

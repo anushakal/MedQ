@@ -39,8 +39,8 @@
   .messages-section {
     display: flex;
     flex-direction: column;
-    margin: 10;
-    padding: 10;
+    margin: 10px;
+    padding: 10px;
   }
   
   .messages-layout {
@@ -90,37 +90,95 @@
   }
   
   .chat-history {
-    max-height: 500px;
-    min-height: 300px;
+    max-height: 300px;
+    min-height: 200px;
     overflow-y: auto;
     padding: 10px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
   }
-
+  
   /* Remove Potential Extra Space */
-.chat-details > *:not(:last-child) {
+  .chat-details > *:not(:last-child) {
     margin-bottom: 0; /* Remove unintended margins */
   }
+  
   /* Hide Chat History When Empty */
-.chat-history.empty {
+  .chat-history.empty {
     display: none; /* Completely hides the container */
   }
   
-  .chat-message {
+  /* Chat Message */
+  .chat-message-container {
+    display: flex;
+    flex-direction: column; /* Stack messages and button vertically */
+    align-items: flex-start;
     margin-bottom: 10px;
   }
   
-  .user-message {
-    text-align: right;
-    color: #007acc;
+  .user-message-container {
+    justify-content: flex-end;
+    align-items: flex-end; /* Align to the right for user messages */
   }
   
+  .ai-message-container {
+    justify-content: flex-start; /* Align to the left for AI messages */
+  }
+  
+  /* Chat Message Styling */
+  .chat-message {
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 60%;
+    word-wrap: break-word;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+  }
+  
+  /* User Message Styling */
+  .user-message {
+    background-color: #007acc; /* Blue for user */
+    color: white;
+    border-top-right-radius: 0;
+    text-align: right;
+  }
+  
+  /* AI Message Styling */
   .ai-message {
+    background-color: #e5e5e5; /* Light gray for AI */
+    color: black;
+    border-top-left-radius: 0;
     text-align: left;
-    color: #333;
+  }
+  
+  /* Summarize Button */
+  .summarize-button {
+    padding: 5px 10px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 5px; /* Space between message and button */
+    transition: background-color 0.3s ease;
+  }
+  
+  .summarize-button:hover {
+    background-color: #005f99;
+  }
+  
+  /* Summary Text Styling */
+  .summary-text {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    margin-top: 5px;
+    color: #555;
   }
   
   /* Chat Input */
@@ -159,6 +217,7 @@
     text-align: center;
   }
   
+  /* Toggle Button */
   .toggle-button {
     background-color: #007acc;
     color: white;
@@ -174,5 +233,11 @@
   
   .toggle-button.off {
     background-color: #007acc;
+  }
+  
+  /* Optional: Adjust alignment of the button to visually match the text */
+  .user-message-container .summarize-button {
+    margin-left: 0; /* No left margin for right-aligned button */
+    margin-right: 10px; /* Add spacing on the right */
   }
   
