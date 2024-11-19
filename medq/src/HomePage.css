@@ -128,6 +128,15 @@ body.high-contrast {
   color: #fff;
 }
 
+body.high-contrast .dashboard-header {
+  background-color: #ffdd00;
+  color: #000;
+}
+
+body.high-contrast .title-section {
+  color: #000;
+}
+
 body.high-contrast .dashboard-button {
   background-color: #ffdd00;
   color: #000;

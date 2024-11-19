@@ -240,6 +240,13 @@
     text-align: center;
   }
   
+  /* When toggle is on, change the background color of the footer */
+ body.high-contrast .dashboard-footer{
+    background-color: #000; /* Dark background for high-contrast mode */
+    color: white; /* White text for high-contrast mode */
+  }
+  
+
   /* Toggle Button */
   .toggle-button {
     background-color: #007acc;
