@@ -33,3 +33,7 @@ This document provides an overview of the current status and future plans for th
 * **Usability Testing:** Conduct usability testing with clinicians to gather feedback on the interface.
 * **Iterative Design:**  Use feedback to iteratively improve the design and address usability issues.
 * **Performance Optimization:** Optimize the summarization process for speed and efficiency.
+
+### 4. Running the project
+
+* Refer to the Readme.md inside the medq folder for detailed instructions.
