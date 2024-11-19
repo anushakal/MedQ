@@ -14,6 +14,7 @@
     margin: 10px;
     margin-bottom: 20px;
     padding: 10px;
+    display:flex;
   }
   
   .back-button {
@@ -34,6 +35,27 @@
   .back-button:focus {
     outline: 2px solid #ffdd00;
   }
+
+  /* Enable MedQ Button (Same as Back Button) */
+.enable-medq-button {
+    background-color: #007acc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: auto; /* Push it to the rightmost side */
+}
+
+.enable-medq-button:hover {
+    background-color: #005f99;
+}
+
+.enable-medq-button:focus {
+    outline: 2px solid #ffdd00;
+}
   
   /* Messages Section */
   .messages-section {

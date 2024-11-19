@@ -15,6 +15,7 @@ const Messages = () => {
   const [selectedChat, setSelectedChat] = useState(null);
   const [messages, setMessages] = useState([]); // Chat messages
   const [userInput, setUserInput] = useState(""); // Input for user's message
+  const [isMedQEnabled, setIsMedQEnabled] = useState(false); // MedQ toggle state
 
   const handleHighContrastToggle = () => {
     setIsHighContrast(!isHighContrast);
@@ -91,6 +92,16 @@ const Messages = () => {
     }
   };
 
+  const handleFeedback = (index, value) => {
+    setMessages((prev) =>
+      prev.map((msg, i) =>
+        i === index
+          ? { ...msg, feedback: value }
+          : msg
+      )
+    );
+  };
+
   return (
     <div className="messages-dashboard">
       {/* Dashboard Header */}
@@ -117,7 +128,7 @@ const Messages = () => {
         </div>
       </div>
 
-      {/* Back Button */}
+      {/* Back Button and MedQ Button */}
       <div className="back-button-container">
         <button
           onClick={() => navigate(-1)}
@@ -125,6 +136,13 @@ const Messages = () => {
           aria-label="Go back to the previous page"
         >
           Back
+        </button>
+        <button
+          onClick={() => setIsMedQEnabled(!isMedQEnabled)}
+          className="enable-medq-button"
+          aria-label="Toggle MedQ"
+        >
+          {isMedQEnabled ? "Disable MedQ" : "Enable MedQ"}
         </button>
       </div>
 
@@ -157,10 +175,12 @@ const Messages = () => {
                 <div className="chat-history">
                   {messages.map((msg, index) => (
                     <div
-                    key={index}
-                    className={`chat-message-container ${
-                      msg.sender === "user" ? "user-message-container" : "ai-message-container"
-                    }`}
+                      key={index}
+                      className={`chat-message-container ${
+                        msg.sender === "user"
+                          ? "user-message-container"
+                          : "ai-message-container"
+                      }`}
                     >
                       <p
                         className={`chat-message ${
@@ -169,12 +189,14 @@ const Messages = () => {
                       >
                         {msg.text}
                       </p>
-                      <button
-                        className="summarize-button"
-                        onClick={() => summarizeMessage(msg.text, index)}
-                      >
-                        Summarize
-                      </button>
+                      {isMedQEnabled && (
+                        <button
+                          className="summarize-button"
+                          onClick={() => summarizeMessage(msg.text, index)}
+                        >
+                          Summarize
+                        </button>
+                      )}
                       
                       {msg.summary && (
                         <p className="summary-text">Summary: {msg.summary}</p>
@@ -182,7 +204,7 @@ const Messages = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="chat-input">
                   <input
                     type="text"
