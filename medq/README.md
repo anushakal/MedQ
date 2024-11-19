@@ -38,41 +38,20 @@ CSS/SCSS: For styling the user interface, including high contrast mode.
 ## Setup Instructions
 To get started with the project, follow these steps:
 **1. Clone the Repository**
-
-Start by cloning this repository to your local machine.
-
   git clone https://github.com/anushakal/MedQ.git
 
-**2. **
-- Install Node.js and npm (Depending on your OS)
+**2. Navigate to medq folder**
+  cd medq
 
-- Open AI API key 
+ **3. Paste the OpenAI key in the .env file**
+   Paste your Open AI key in the .env file
+
+  **4. install npm packages.**
+    Open a new termimal in the medq folder  - npm install
+
+  **5. Running the web app**
+    npm start
+ 
    
-Navigate to the project folder and install the required dependencies.
-
-bash
-Co
-cd messages-dashboard-app
-npm install
-3. Set Up OpenAI API
-To interact with the OpenAI API, you need an API key. Create an .env file in the root of your project and add the following:
-
-makefile
-Copy code
-REACT_APP_OPENAI_API_KEY=your-api-key-here
-4. Run the Application
-Once the dependencies are installed and the API key is configured, run the application using:
-
-bash
-Copy code
-npm start
-This will start the development server and open the app in your default web browser. The app should be accessible at http://localhost:3000.
-
-5. Optional: Backend Setup (If applicable)
-If your project uses a backend server for additional features or data storage, follow the specific setup instructions for the backend (e.g., running a server with node server.js, setting up database credentials, etc.).
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Notes:
 Ensure that the OpenAI API key handling and environment variables are securely configured.
