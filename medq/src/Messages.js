@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { OpenAI } from "openai"; // Import OpenAI library
-import "./Messages.css";
-import patientIcon from "./images/patientIcon.png";
+import "./Messages.css"; //Css file for Styling
+import patientIcon from "./images/patientIcon.png"; //Patient icon to be displayed on the right
 
+// Using the Open AI API
 const openai = new OpenAI({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true,
 });
 
+
 const Messages = () => {
   const navigate = useNavigate();
   const [isHighContrast, setIsHighContrast] = useState(false);
-  const [selectedChat, setSelectedChat] = useState(null);
+  const [selectedChat, setSelectedChat] = useState(null); //Chat selection
   const [messages, setMessages] = useState([]); // Chat messages
   const [userInput, setUserInput] = useState(""); // Input for user's message
   const [isMedQEnabled, setIsMedQEnabled] = useState(false); // MedQ toggle state
@@ -27,6 +29,7 @@ const Messages = () => {
     document.body.classList.remove("high-contrast");
   }
 
+  //Sample chats 
   const chats = [
     { name: "Dr. XYZ", specialty: "Physician" },
     { name: "Dr. DEF", specialty: "Ophthalmologist" },
@@ -34,6 +37,8 @@ const Messages = () => {
     { name: "Dr. JKL", specialty: "Dermatologist" },
   ];
 
+
+  //Chat functionality
   const sendMessage = async () => {
     if (!userInput.trim()) return;
 
@@ -45,6 +50,9 @@ const Messages = () => {
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
+          // System message setting the context for the clinician role
+          { role: "system", content: "You are a clinician providing medical assistance and guidance." },
+  
           ...messages.map((msg) => ({
             role: msg.sender === "user" ? "user" : "assistant",
             content: msg.text,
@@ -68,12 +76,13 @@ const Messages = () => {
     }
   };
 
+  // Summarizing the messages
   const summarizeMessage = async (text, index) => {
     try {
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
-          { role: "system", content: "Summarize the following text succinctly." },
+          { role: "system", content: "Summarize the following text succinctly. Be sure to include all the key medical terms and numbers mentioned in the original message." }, //Prompt for summarization
           { role: "user", content: text },
         ],
       });
@@ -92,6 +101,7 @@ const Messages = () => {
     }
   };
 
+  //Feedback collection for the summary
   const handleFeedback = (index, value) => {
     setMessages((prev) =>
       prev.map((msg, i) =>
@@ -102,6 +112,7 @@ const Messages = () => {
     );
   };
 
+  //Summarizing the whole chat
   const summarizeWholeChat = async () => {
     if (!isMedQEnabled) return; // Only works if MedQ is enabled
 
@@ -136,7 +147,7 @@ const Messages = () => {
 
   return (
     <div className="messages-dashboard">
-      {/* Dashboard Header */}
+      {/* Dashboard Header: Contains the hospital name and patient profile */}
       <div className="dashboard-header">
         <div className="title-section">
           <a
@@ -286,9 +297,10 @@ const Messages = () => {
   );
 };
 
+// ToggleButton component to handle the high contrast toggle feature
 const ToggleButton = ({ onClick, isToggled }) => {
   return (
-    <button
+    <button   // Button element that toggles high contrast mode
       onClick={onClick}
       className={`toggle-button ${isToggled ? "on" : "off"}`}
       aria-pressed={isToggled}

@@ -36,9 +36,9 @@
     outline: 2px solid #ffdd00;
   }
 
-  /* Enable MedQ Button (Same as Back Button) */
+  /* Enable MedQ Button */
 .enable-medq-button {
-    background-color: #007acc;
+    background-color: #2500cc;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -46,7 +46,7 @@
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-left: auto; /* Push it to the rightmost side */
+    margin-left: auto; 
 }
 
 .enable-medq-button:hover {
@@ -69,7 +69,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    gap: 0; /* No gap between sections */
+    gap: 10px; 
   }
   
   /* Chat List (Left Column) */
@@ -101,6 +101,10 @@
   
   .chat-list li:hover {
     background-color: #d0d0d0;
+  }
+
+  .summarizeWholeChat{
+    background-color:  #2500cc;
   }
   
   /* Chat Details (Right Column) */
@@ -181,7 +185,7 @@
   /* Summarize Button */
   .summarize-button {
     padding: 5px 10px;
-    background-color: #007acc;
+    background-color: #2500cc;
     color: white;
     border: none;
     border-radius: 5px;
@@ -240,7 +244,6 @@
     text-align: center;
   }
   
-  /* When toggle is on, change the background color of the footer */
  body.high-contrast .dashboard-footer{
     background-color: #000; /* Dark background for high-contrast mode */
     color: white; /* White text for high-contrast mode */
@@ -265,7 +268,6 @@
     background-color: #007acc;
   }
   
-  /* Optional: Adjust alignment of the button to visually match the text */
   .user-message-container .summarize-button {
     margin-left: 0; /* No left margin for right-aligned button */
     margin-right: 10px; /* Add spacing on the right */
