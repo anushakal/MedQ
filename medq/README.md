@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# MedQ
+The MedQ App is an interactive web application designed to facilitate communication between patients and clinicians. The app can work in integration with the existing hospital portals and help users get a quick and crisp summary of their queries.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Key Features:
+**Chat Interface**: Allows patients to engage in real-time messaging with clinicians.
+**MedQ Enable**: Enable or disable the MedQ feature that provides summarized medical queries.
+**High Contrast Mode**: Toggle between regular and high-contrast modes for accessibility.
+**Chat Summarization**: Get summaries of individual messages or entire chat history.
+**User Feedback**: Patients can rate the usefulness of summaries using emojis.
 
-## Available Scripts
+## Project Files:
+- **images**: Contains static image assets used across the application (e.g., icons, logos).
+- **App.css**: Defines global CSS styles for the main application component, ensuring consistent styling across the app.
+- **App.js**: The root component that initializes and renders the main structure of the application.
+- **App.test.js**: Contains unit tests for the `App.js` component to ensure correct functionality.
+- **HomePage.css**: Contains CSS styles specific to the layout and design of the home page.
+- **HomePage.js**: The home page component that serves as the landing page of the application, with introductory content and navigation options.
+- **Messages.css**: Defines CSS styles for the message display area, including the chat interface and message formatting.
+- **Messages.js**: Manages the logic for rendering and interacting with the messages, including chat history and user inputs.
+- **index.css**: Global CSS file that includes default styles for the application, affecting the overall layout.
+- **index.js**: The entry point of the React application, responsible for rendering the `App.js` component into the DOM.
 
-In the project directory, you can run:
+## Dependencies
+This project uses the following libraries and frameworks:
+Node.js: JavaScript runtime used for building and running the application.
+npm: Node package manager used to install and manage the app’s dependencies.
+React: A JavaScript library for building user interfaces.
+OpenAI API: For integrating GPT-3.5 to generate responses from the clinician and summarization.
+Axios (optional): For making HTTP requests if needed for backend services.
+React Router: For navigation and page routing.
+CSS/SCSS: For styling the user interface, including high contrast mode.
 
-### `npm start`
+## Installing dependencies 
+- Install Node.js and npm (based on your OS)
+  
+- OPEN AI API KEY - Register for a key at: https://openai.com/
+ 
+## Setup Instructions
+To get started with the project, follow these steps:
+**1. Clone the Repository**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Start by cloning this repository to your local machine.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  git clone https://github.com/anushakal/MedQ.git
 
-### `npm test`
+**2. **
+- Install Node.js and npm (Depending on your OS)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Open AI API key 
+   
+Navigate to the project folder and install the required dependencies.
 
-### `npm run build`
+bash
+Co
+cd messages-dashboard-app
+npm install
+3. Set Up OpenAI API
+To interact with the OpenAI API, you need an API key. Create an .env file in the root of your project and add the following:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+makefile
+Copy code
+REACT_APP_OPENAI_API_KEY=your-api-key-here
+4. Run the Application
+Once the dependencies are installed and the API key is configured, run the application using:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+bash
+Copy code
+npm start
+This will start the development server and open the app in your default web browser. The app should be accessible at http://localhost:3000.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Optional: Backend Setup (If applicable)
+If your project uses a backend server for additional features or data storage, follow the specific setup instructions for the backend (e.g., running a server with node server.js, setting up database credentials, etc.).
 
-### `npm run eject`
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Notes:
+Ensure that the OpenAI API key handling and environment variables are securely configured.
