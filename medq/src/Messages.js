@@ -242,8 +242,8 @@ const Messages = () => {
                       )}
                       
                       {msg.summary && (
-                        <>
-                          <p className="summary-text">Summary: {msg.summary}</p>
+                        <div className={`chat-message-container ai-message-container`}>
+                          <p className="chat-message ai-message">Summary: {msg.summary}</p>
                           <div className="feedback-container">
                             {[1, 2, 3, 4, 5].map((value) => (
                               <span
@@ -257,7 +257,7 @@ const Messages = () => {
                               </span>
                             ))}
                           </div>
-                        </>
+                        </div>
                       )}
                     </div>
                   ))}
