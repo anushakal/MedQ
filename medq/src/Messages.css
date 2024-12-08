@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: #007acc;
+    background-color: #4277da !important;
     color: white;
     border-bottom: 1px solid #ddd;
   }
@@ -18,7 +18,7 @@
   }
   
   .back-button {
-    background-color: #007acc;
+    background-color: #225dca;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -29,16 +29,18 @@
   }
   
   .back-button:hover {
-    background-color: #005f99;
+    background-color: #1a489d;
+  }
+
+  body.high-contrast .back-button{
+    background-color: #112448 !important;
+    color: #fff;
   }
   
-  .back-button:focus {
-    outline: 2px solid #ffdd00;
-  }
 
   /* Enable MedQ Button */
 .enable-medq-button {
-    background-color: #2500cc;
+    background-color:#442fe3;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -50,12 +52,9 @@
 }
 
 .enable-medq-button:hover {
-    background-color: #005f99;
+    background-color: #20166d;
 }
 
-.enable-medq-button:focus {
-    outline: 2px solid #ffdd00;
-}
   
   /* Messages Section */
   .messages-section {
@@ -173,6 +172,10 @@
     border-top-right-radius: 0;
     text-align: right;
   }
+
+  body.high-contrast .user-message{
+    background-color: #0f295a;
+  }
   
   /* AI Message Styling */
   .ai-message {
@@ -180,6 +183,11 @@
     color: black;
     border-top-left-radius: 0;
     text-align: left;
+  }
+
+  body.high-contrast .ai-message {
+    background-color: #393636 !important;
+    color: white;
   }
   
   /* Summarize Button */
@@ -196,7 +204,7 @@
   }
   
   .summarize-button:hover {
-    background-color: #005f99;
+    background-color: #20166d;
   }
   
   /* Summary Text Styling */
@@ -204,7 +212,7 @@
     font-size: 16px;
     font-family: Arial, sans-serif;
     margin-top: 5px;
-    color: #555;
+    color: #000;
   }
   
   /* Chat Input */
@@ -223,7 +231,7 @@
   
   .chat-input button {
     padding: 10px 15px;
-    background-color: #007acc;
+    background-color: #225dca;
     color: white;
     border: none;
     border-radius: 5px;
@@ -232,9 +240,13 @@
   }
   
   .chat-input button:hover {
-    background-color: #005f99;
+    background-color: #1a489d;
   }
   
+  body.high-contrast .chat-input button {
+    background-color: #112448 !important;
+    color: #fff;
+  }
   /* Footer */
   .dashboard-footer {
     margin-top: 10px;
@@ -244,10 +256,6 @@
     text-align: center;
   }
   
- body.high-contrast .dashboard-footer{
-    background-color: #000; /* Dark background for high-contrast mode */
-    color: white; /* White text for high-contrast mode */
-  }
   
 
   /* Toggle Button */
