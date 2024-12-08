@@ -22,8 +22,7 @@ const HomePage = () => {
   return (
     <div className="homepage-dashboard">
       {/* Dashboard Header */}
-      <div className="dashboard-header">
-        <div className="title-section">
+      <header className="dashboard-header">
           {/* Hospital Title - Link back to Home Page */}
           <a href="/" 
             className="hospital-title" 
@@ -32,7 +31,7 @@ const HomePage = () => {
           >
             XYZ Hospital
           </a>
-        </div>
+        
         <div className="patient-profile">
           {/* Patient Profile Icon */}
           <img
@@ -47,7 +46,7 @@ const HomePage = () => {
             Anusha Kalbande
           </p>
         </div>
-      </div>
+      </header>
 
       {/* Main Dashboard Section*/}
       <h1 id="dashboard-heading" className="sr-only">
