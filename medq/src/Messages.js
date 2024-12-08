@@ -129,15 +129,11 @@ const Messages = () => {
 
       const summary = response.choices[0].message.content;
 
-      const smileys = ["😄", "🙂", "😐", "🙁", "😢"];
-
       setMessages((prev) => [
         ...prev,
         {
           sender: "assistant",
-          text: "Chat Summary",
-          summary,
-          smileys,
+          text: "Entire Chat Summary: " + summary
         },
       ]);
     } catch (error) {
@@ -232,7 +228,8 @@ const Messages = () => {
                       >
                         {msg.text}
                       </p>
-                      {isMedQEnabled && (
+
+                      {isMedQEnabled && !msg.text.startsWith("Entire Chat Summary:") && (
                         <button
                           className="summarize-button"
                           onClick={() => summarizeMessage(msg.text, index)}
@@ -240,8 +237,25 @@ const Messages = () => {
                           Summarize
                         </button>
                       )}
+
+                      {/* Render feedback smileys if the message is "Entire Chat Summary" */}
+                      {msg.text.startsWith("Entire Chat Summary:") && (
+                        <div className="feedback-container">
+                          {[1, 2, 3, 4, 5].map((value) => (
+                            <span
+                              key={value}
+                              className={`feedback-smiley ${
+                                msg.feedback === value ? "selected" : ""
+                              }`}
+                              onClick={() => handleFeedback(index, value)}
+                            >
+                              {["😡", "☹️", "😐", "🙂", "😄"][value - 1]}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                       
-                      {msg.summary && (
+                      {msg.summary &&  !msg.text.startsWith("Entire Chat Summary:") && (
                         <div className={`chat-message-container ai-message-container`}>
                           <p className="chat-message ai-message">Summary: {msg.summary}</p>
                           <div className="feedback-container">
