@@ -1,4 +1,8 @@
-# MedQ: AI-Powered Chat Summarization Tool
+# MedQ Summarizer - Summarizing queries for improved doctor-patient insights
+
+## The slides from the final presentation for this project can be found at:
+
+https://docs.google.com/presentation/d/1QDLu8O1R9VyrZMDtGLwLYf_MrDNv2kwCEqsrpldNlNk/edit?usp=sharing
 
 ## Project Status Update (as of Nov 18, 2024)
 
