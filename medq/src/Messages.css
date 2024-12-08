@@ -209,10 +209,15 @@
   
   /* Summary Text Styling */
   .summary-text {
-    font-size: 16px;
-    font-family: Arial, sans-serif;
     margin-top: 5px;
     color: #000;
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 60%;
+    word-wrap: break-word;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
   }
   
   /* Chat Input */
@@ -293,4 +298,26 @@
     margin-left: 0; /* No left margin for right-aligned button */
     margin-right: 10px; /* Add spacing on the right */
   }
+
+  .feedback-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .feedback-smiley {
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .feedback-smiley:hover {
+    transform: scale(1.2); /* Scale up when hovered */
+  }
+  
+  .feedback-smiley.selected {
+    color: gold; /* Highlight selected smiley with gold */
+    transform: scale(1.4); /* Make selected smiley larger */
+  }
+  
   
