@@ -1,9 +1,7 @@
 /* General Styling for Homepage*/
 .homepage-dashboard {
-  font-family: Arial, sans-serif; /*Font for the web page*/
-  color: #333;
-  background-color: #f9f9f9;
-  padding: 20px;
+  font-family: Calibri, serif; /*Font for the web page*/
+  background-color: #afc4ec;
   min-height: 100vh;
   display: flex; /*Flexbox Layout*/
   flex-direction: column;
@@ -16,14 +14,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #007acc;
-  color: white;
-  border-bottom: 1px solid #ddd;
+  background-color: #4277da !important;
+  color: rgb(255, 255, 255);
+  border: 2px solid white;
 }
-/* Title section of the dashboard header */
-.title-section {
-  flex: 3; /* The title section will take 3 parts of available space in responsive design */
-}
+
 
 /* Hospital title link styling */
 .hospital-title {
@@ -77,7 +72,7 @@
   padding: 15px 20px;
   font-size: 16px;
   color: #fff;
-  background-color: #007acc;
+  background-color: #225dca;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -85,7 +80,7 @@
 
 /* Hover effect for buttons */
 .dashboard-button:hover {
-  background-color: #005fa3;
+  background-color: #1a489d;
 }
 
 /* Footer Styling */
@@ -94,14 +89,15 @@
   margin-top: 20px;
   padding-top: 15px;
   border-top: 1px solid #ddd;
-  padding-bottom: 20px; 
+  padding-bottom: 20px;
+  background-color: #4277da !important;
 }
 
 /* Styling for the High Contrast Button */
 .toggle-button {
   padding: 10px 20px;
   font-size: 14px;
-  background-color: #444;
+  background-color: #442fe3 !important;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -110,41 +106,33 @@
 }
 
 .toggle-button.on {
-  background-color: #ffdd00;
-  color: #000;
+  background-color: #0f295a;
+  color: #fff !important;
 }
 
 .toggle-button.off {
   background-color: #444;
+  color: #fff !important;
 }
 
 .toggle-button:hover {
-  background-color: #222;
+  background-color: #20166d !important;
 }
 
-/* High Contrast Mode */
-body.high-contrast {
-  background-color: #000;
+
+body.high-contrast .dashboard-header {
+  background-color: #112448 !important;
   color: #fff;
 }
 
-body.high-contrast .dashboard-header {
-  background-color: #ffdd00;
-  color: #000;
-}
-
-body.high-contrast .title-section {
-  color: #000;
-}
 
 body.high-contrast .dashboard-button {
-  background-color: #ffdd00;
-  color: #000;
+  background-color: #112448 !important;
+  color: #fff;
 }
 
-body.high-contrast .toggle-button {
-  background-color: #ffdd00;
-  color: #000;
+body.high-contrast .dashboard-footer{
+  background-color: #112448 !important;
 }
 
 /* Responsive Design */
