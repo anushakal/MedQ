@@ -229,7 +229,7 @@
     border-radius: 5px;
   }
   
-  .chat-input button {
+  #send{
     padding: 10px 15px;
     background-color: #225dca;
     color: white;
@@ -239,14 +239,27 @@
     font-size: 16px;
   }
   
-  .chat-input button:hover {
+  #send:hover {
     background-color: #1a489d;
   }
   
-  body.high-contrast .chat-input button {
+  body.high-contrast #send {
     background-color: #112448 !important;
     color: #fff;
   }
+
+  #summarize-chat-button{
+    background-color: #2500cc;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+
+  }
+
+
   /* Footer */
   .dashboard-footer {
     margin-top: 10px;

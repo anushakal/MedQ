@@ -270,9 +270,9 @@ const Messages = () => {
                     onChange={(e) => setUserInput(e.target.value)}
                     placeholder="Type your message..."
                   />
-                  <button onClick={sendMessage}>Send</button>
+                  <button id = "send" onClick={sendMessage}>Send</button>
                   {isMedQEnabled && (
-                    <button onClick={summarizeWholeChat}>
+                    <button id="summarize-chat-button" onClick={summarizeWholeChat}>
                       Summarize Entire Chat
                     </button>
                   )}
