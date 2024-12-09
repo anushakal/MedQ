@@ -1,92 +1,77 @@
-# ClearSpeak - Making transcriptions accessible for people with stuttering problems.
+# MedQ
+The MedQ App is an interactive web application designed to facilitate communication between patients and clinicians. The app can work in integration with the existing hospital portals and help users get a quick and crisp summary of their queries.
 
 ## Key Features:
-
-- **Audio Record:** Users can record audio files via the record button where they are stored for further processing.
-
-- **Speech-to-Text Transcription:** The app converts speech in audio files into text using Google Cloud's Speech-to-Text API. This is the original transcript shown by the app.
-  
-- **Repetition Removal:** The app further uses OpenAI's GPT-3.5 API to process the transcript and remove repeated words, enhancing the accessibility of the output to output the modified transcript.
+**Chat Interface**: Allows patients to engage in real-time messaging with clinicians.
+**MedQ Enable**: Enable or disable the MedQ feature that provides summarized medical queries.
+**High Contrast Mode**: Toggle between regular and high-contrast modes for accessibility.
+**Chat Summarization**: Get summaries of individual messages or entire chat history.
+**User Feedback**: Patients can rate the usefulness of summaries using emojis.
 
 ## Project Files:
-project-root/
-├── backend/
-│   ├── app.py                # Main Flask application with endpoints
-│   ├── google-account.json   # Service account key for Google Cloud Speech API
-│   ├── .env                  # Environment variables (e.g., OpenAI API Key)
-│   ├── uploads/              # Temporary storage for uploaded audio files
-├── public/
-│   ├── assets/               # Images and static files
-│   └── index.html            # Entry point for frontend (if applicable)
-├── src/
-│   ├── components/           # React components (if frontend integration is added)
-│   ├── services/             # Frontend API services
-│   └── App.js                # React app entry point
-├── .gitignore                # Specifies files/folders to ignore in version control
-├── README.md                 # Documentation for the project
-├── package-lock.json         # Auto-generated file for dependency tree
-├── package.json              # Project metadata and dependencies for Node.js
-
+- **images**: Contains static image assets used across the application (e.g., icons, logos).
+- **App.css**: Defines global CSS styles for the main application component, ensuring consistent styling across the app.
+- **App.js**: The root component that initializes and renders the main structure of the application.
+- **App.test.js**: Contains unit tests for the `App.js` component to ensure correct functionality.
+- **HomePage.css**: Contains CSS styles specific to the layout and design of the home page.
+- **HomePage.js**: The home page component that serves as the landing page of the application, with introductory content and navigation options.
+- **Messages.css**: Defines CSS styles for the message display area, including the chat interface and message formatting.
+- **Messages.js**: Manages the logic for rendering and interacting with the messages, including chat history and user inputs.
+- **index.css**: Global CSS file that includes default styles for the application, affecting the overall layout.
+- **index.js**: The entry point of the React application, responsible for rendering the `App.js` component into the DOM.
 
 ## Dependencies
-**Backend:**
-
-Flask: Web framework for API creation.
-
-Flask-CORS: Enable Cross-Origin Resource Sharing.
-
-google-cloud-speech: Google's Speech-to-Text API integration.
-
-pydub: Audio file processing and resampling.
-
-openai: API client for OpenAI's GPT models.
-
-python-dotenv: Load environment variables from a .env file.
-
-**Frontend**
-React: For building user interfaces
+This project uses the following libraries and frameworks:
+Node.js: JavaScript runtime used for building and running the application.
+npm: Node package manager used to install and manage the app’s dependencies.
+React: A JavaScript library for building user interfaces.
+OpenAI API: For integrating GPT-3.5 to generate responses from the clinician and summarization.
+Axios (optional): For making HTTP requests if needed for backend services.
+React Router: For navigation and page routing.
+CSS/SCSS: For styling the user interface, including high contrast mode.
 
 ## Installing dependencies 
 - Install Node.js and npm (based on your OS)
   
 - OPEN AI API KEY - Register for a key at: https://openai.com/
-
-- GOOGLE API key for Speech to text API:
-     - Enroll for a free API key at: https://cloud.google.com/speech-to-text/?hl=en#how-it-works  
  
 ## Setup Instructions
 To get started with the project, follow these steps:
-
 **1. Clone the Repository**
 
-  git clone https://github.com/anushakal/ClearSpeak.git
+Start by cloning this repository to your local machine.
 
-**2. Navigate to medq folder (Make sure you are in the folder ClearSpeak/clear)** 
-  
-  cd ClearSpeak
+  git clone https://github.com/anushakal/MedQ.git
 
-  cd clear
+**2. **
+- Install Node.js and npm (Depending on your OS)
 
- **3. Install the frontend dependencies**
-      Open a new terminal at ClearSpeak/clear - npm install
-
-  **4. Backend Dependencies**
-      - Navigate to backend folder - cd backend
-      
-      - Place your Google API json file in the backend folder - google-account.json
-      
-      - Create a .env file and paste your OPENAI API Key as:
-        
-        OPEN_AI_KEY="your api key"
-
-      - Installing python dependencies - pip install -r requirements.txt
-
-  **4. Start the app**
+- Open AI API key 
    
-      - Start the backend server  - python app.py
+Navigate to the project folder and install the required dependencies.
 
-      - Start the frontend app -  npm start 
- 
-   
+cd messages-dashboard-app
+npm install
+3. Set Up OpenAI API
+To interact with the OpenAI API, you need an API key. Create an .env file in the root of your project and add the following:
+
+makefile
+Copy code
+REACT_APP_OPENAI_API_KEY=your-api-key-here
+4. Run the Application
+Once the dependencies are installed and the API key is configured, run the application using:
+
+bash
+Copy code
+npm start
+This will start the development server and open the app in your default web browser. The app should be accessible at http://localhost:3000.
+
+5. Optional: Backend Setup (If applicable)
+If your project uses a backend server for additional features or data storage, follow the specific setup instructions for the backend (e.g., running a server with node server.js, setting up database credentials, etc.).
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
 ## Notes:
-Ensure that the OpenAI API key and the Google API key are securely configured.
+Ensure that the OpenAI API key handling and environment variables are securely configured.
+
