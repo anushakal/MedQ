@@ -80,15 +80,8 @@ app.post('/api/summarize_msg', async (req, res) => {
 
 // API call for responding to messages
 app.post('/api/summarize_chat', async (req, res) => {
-  console.log("\n\nOG REQUEST")
-  console.log(req.body)
   fullChat = req.body.fullChat
-  console.log("USER INPUT", fullChat)
-
   const response = await getChatSummary(fullChat);
-
-  console.log("\n\nGPT RESPONSE")
-  console.log(response.choices[0].message);
   res.send(response.choices[0].message);
 });
 

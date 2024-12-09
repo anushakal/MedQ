@@ -123,9 +123,11 @@ const Messages = () => {
     if (!isMedQEnabled) return; // Only works if MedQ is enabled
 
     try {
-      const fullChat = messages.map((msg) => msg.text).join("\n");
+      console.log("FULL CHAT", messages);
+      const fullChat = messages.map((msg) => msg.sender + ": " + msg.text).join("\n");
+      console.log(fullChat);
 
-      const response = await fetch('http://localhost:5000/api/summarize_msg', {
+      const response = await fetch('http://localhost:5000/api/summarize_chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -310,7 +312,7 @@ const Messages = () => {
 
                       Summarize Entire Chat
                     </button>
-                  )} */}
+                  )}
                 </div>
               </div>
             ) : (
