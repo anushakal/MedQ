@@ -1,5 +1,18 @@
 {
   "dependencies": {
-    "openai": "^4.72.0"
-  }
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "openai": "^4.76.0"
+  },
+  "name": "medq",
+  "version": "1.0.0",
+  "description": "This document provides an overview of the current status and future plans for the AI-powered chat summarization tool.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

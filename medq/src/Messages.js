@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { OpenAI } from "openai"; // Import OpenAI library
 import "./Messages.css"; //Css file for Styling
 import patientIcon from "./images/patientIcon.png"; //Patient icon to be displayed on the right
-
-// Using the Open AI API
-const openai = new OpenAI({
-  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true,
-});
-
 
 const Messages = () => {
   const navigate = useNavigate();
@@ -47,27 +39,33 @@ const Messages = () => {
     setUserInput("");
 
     try {
-      const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages: [
-          // System message setting the context for the clinician role
-          { role: "system", content: "You are a clinician providing medical assistance and guidance." },
-  
-          ...messages.map((msg) => ({
-            role: msg.sender === "user" ? "user" : "assistant",
-            content: msg.text,
-          })),
-          { role: "user", content: userInput },
-        ],
+      const response = await fetch('http://localhost:5000/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          messages: [...messages, newMessage], 
+          userInput: userInput
+        }), // Send all messages to the server
       });
+
+      if (!response.ok) {
+        const errorData = await response.json(); // Try to parse error details
+        const errorMessage = errorData.error || 'Network response was not ok';
+        throw new Error(errorMessage);
+      }
+      
+      // Parse the response as JSON and access content
+      const data = await response.json();
+      const messageContent = data.content; 
 
       const aiMessage = {
         sender: "assistant",
-        text: response.choices[0].message.content,
+        text: messageContent,
       };
+
       setMessages((prev) => [...prev, aiMessage]);
     } catch (error) {
-      console.error("Error fetching response from OpenAI:", error);
+      console.error('Error fetching response from OpenAI:', error);
       const errorMessage = {
         sender: "assistant",
         text: "Sorry, I couldn't process your message. Please try again.",
@@ -79,15 +77,23 @@ const Messages = () => {
   // Summarizing the messages
   const summarizeMessage = async (text, index) => {
     try {
-      const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages: [
-          { role: "system", content: "Summarize the following text succinctly. Be sure to include all the key medical terms and numbers mentioned in the original message." }, //Prompt for summarization
-          { role: "user", content: text },
-        ],
+      const response = await fetch('http://localhost:5000/api/summarize_msg', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          userInput: text
+        }), // Send all messages to the server
       });
 
-      const summary = response.choices[0].message.content;
+      if (!response.ok) {
+        const errorData = await response.json(); // Try to parse error details
+        const errorMessage = errorData.error || 'Network response was not ok';
+        throw new Error(errorMessage);
+      }
+      
+      // Parse the response as JSON and access content
+      const data = await response.json();
+      const summary = data.content;
 
       setMessages((prev) =>
         prev.map((msg, i) =>
@@ -101,7 +107,7 @@ const Messages = () => {
     }
   };
 
-  //Feedback collection for the summary
+  // Feedback collection for the summary
   const handleFeedback = (index, value) => {
     setMessages((prev) =>
       prev.map((msg, i) =>
@@ -112,22 +118,30 @@ const Messages = () => {
     );
   };
 
-  //Summarizing the whole chat
+  // Summarizing the whole chat
   const summarizeWholeChat = async () => {
     if (!isMedQEnabled) return; // Only works if MedQ is enabled
 
     try {
       const fullChat = messages.map((msg) => msg.text).join("\n");
 
-      const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages: [
-          { role: "system", content: "Summarize the entire conversation succinctly." },
-          { role: "user", content: fullChat },
-        ],
+      const response = await fetch('http://localhost:5000/api/summarize_msg', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          fullChat: fullChat
+        }), // Send all messages to the server
       });
 
-      const summary = response.choices[0].message.content;
+      if (!response.ok) {
+        const errorData = await response.json(); // Try to parse error details
+        const errorMessage = errorData.error || 'Network response was not ok';
+        throw new Error(errorMessage);
+      }
+      
+      // Parse the response as JSON and access content
+      const data = await response.json();
+      const summary = data.content;
 
       const smileys = ["😄", "🙂", "😐", "🙁", "😢"];
 
@@ -271,11 +285,11 @@ const Messages = () => {
                     placeholder="Type your message..."
                   />
                   <button onClick={sendMessage}>Send</button>
-                  {isMedQEnabled && (
+                  {/* {isMedQEnabled && (
                     <button onClick={summarizeWholeChat}>
                       Summarize Entire Chat
                     </button>
-                  )}
+                  )} */}
                 </div>
               </div>
             ) : (
