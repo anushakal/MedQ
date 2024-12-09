@@ -12,11 +12,11 @@ https://docs.google.com/presentation/d/1QDLu8O1R9VyrZMDtGLwLYf_MrDNv2kwCEqsrpldN
 The MedQ App is an interactive web application designed to facilitate communication between patients and clinicians. The app can work in integration with the existing hospital portals and help users get a quick and crisp summary of their queries.
 
 ## Key Features:
-**Chat Interface**: Allows patients to engage in real-time messaging with clinicians.
-**MedQ Enable**: Enable or disable the MedQ feature that provides summarized medical queries.
-**High Contrast Mode**: Toggle between regular and high-contrast modes for accessibility.
-**Chat Summarization**: Get summaries of individual messages or entire chat history.
-**User Feedback**: Patients can rate the usefulness of summaries using emojis.
+- **Chat Interface**: Allows patients to engage in real-time messaging with clinicians.
+- **MedQ Enable**: Enable or disable the MedQ feature that provides summarized medical queries.
+- **High Contrast Mode**: Toggle between regular and high-contrast modes for accessibility.
+- **Chat Summarization**: Get summaries of individual messages or entire chat history.
+- **User Feedback**: Patients can rate the usefulness of summaries using emojis.
 
 ## Project Files:
 - **images**: Contains static image assets used across the application (e.g., icons, logos).
@@ -32,42 +32,37 @@ The MedQ App is an interactive web application designed to facilitate communicat
 
 ## Dependencies
 This project uses the following libraries and frameworks:
-Node.js: JavaScript runtime used for building and running the application.
-npm: Node package manager used to install and manage the app’s dependencies.
-React: A JavaScript library for building user interfaces.
-OpenAI API: For integrating GPT-3.5 to generate responses from the clinician and summarization.
-Axios (optional): For making HTTP requests if needed for backend services.
-React Router: For navigation and page routing.
-CSS/SCSS: For styling the user interface, including high contrast mode.
+- Node.js: JavaScript runtime used for building and running the application.
+- npm: Node package manager used to install and manage the app’s dependencies.
+- React: A JavaScript library for building user interfaces.
+- OpenAI API: For integrating GPT-3.5 to generate responses from the clinician and summarization.
+- Axios: For making HTTP requests if needed for backend services.
+- React Router: For navigation and page routing.
+- CSS/SCSS: For styling the user interface, including high contrast mode.
 
 ## Installing dependencies 
 - Install Node.js and npm (based on your OS)
-  
 - OPEN AI API KEY - Register for a key at: https://openai.com/
  
 ## Setup Instructions
 To get started with the project, follow these steps:
 
-# 1. **Clone the Repository**
-
+### 1. Clone the Repository
 Start by cloning this repository to your local machine.
+git clone https://github.com/anushakal/MedQ.git
 
-  git clone https://github.com/anushakal/MedQ.git
-
-# 2. **Install npm in server and medq (frontend)** 
+### 2. Install npm in server and medq (frontend)
 - Install Node.js and npm (Depending on your OS)
-- Open AI API key 
-- Navigate to the project folder and install the required dependencies.
-- cd messages-dashboard-app
-- npm install
+- OpenAI API key 
+- Navigate to the project folder and install the required dependencies using `npm install`
 
-# 3. Set Up OpenAI API
+### 3. Set Up OpenAI API
 To interact with the OpenAI API, you need an API key.
 - Create an `.env` file in the server directory of your project and add the following:
 - Paste this ```OPENAI_API_KEY=your-api-key-here```
 - Replace "your-api-key-here" with the actual OpenAI API Key
 
-# 4. Run the Application
+### 4. Run the Application
 Once the dependencies are installed and the API key is configured:
 
 - Open 2 terminals: for frontend and server
