@@ -2,11 +2,11 @@
 
 ## The slides from the final presentation for this project can be found at:
 
-https://docs.google.com/presentation/d/1QDLu8O1R9VyrZMDtGLwLYf_MrDNv2kwCEqsrpldNlNk/edit?usp=sharing
+[Google Sheets Link](https://docs.google.com/presentation/d/1QDLu8O1R9VyrZMDtGLwLYf_MrDNv2kwCEqsrpldNlNk/edit?usp=sharing)
 
 ## The video link of the Demo can be found at:
 
-https://docs.google.com/presentation/d/1QDLu8O1R9VyrZMDtGLwLYf_MrDNv2kwCEqsrpldNlNk/edit?usp=sharing
+[Google Drive Link](https://drive.google.com/file/d/1mSNcH_4a8aeSvLFEtZiw_UZdm1xYFvKA/view?usp=drive_link)
 
 # MedQ
 The MedQ App is an interactive web application designed to facilitate communication between patients and clinicians. The app can work in integration with the existing hospital portals and help users get a quick and crisp summary of their queries.
