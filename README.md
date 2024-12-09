@@ -4,40 +4,78 @@
 
 https://docs.google.com/presentation/d/1QDLu8O1R9VyrZMDtGLwLYf_MrDNv2kwCEqsrpldNlNk/edit?usp=sharing
 
-## Project Status Update (as of Nov 18, 2024)
+## The video link of the Demo can be found at:
 
-This document provides an overview of the current status and future plans for the AI-powered chat summarization tool.
+https://docs.google.com/presentation/d/1QDLu8O1R9VyrZMDtGLwLYf_MrDNv2kwCEqsrpldNlNk/edit?usp=sharing
 
-### 1. Completed Work
+# MedQ
+The MedQ App is an interactive web application designed to facilitate communication between patients and clinicians. The app can work in integration with the existing hospital portals and help users get a quick and crisp summary of their queries.
 
-* **Core Functionality:**
-    * Integrated OpenAI 3.5 Turbo LLM with the chat interface.
-    * Implemented a functional "Summarize" button for individual messages.
-    * Implemented a functional "Summarize Chat" button for the entire conversation.
-    * Enabled the display of the generated summary within the chat window.
-    * Added an option to disable the "Summary" feature for users who prefer not to use AI.
-* **Initial Design:**
-    * Created a responsive design that adapts to different screen sizes.
-    * Ensured the UI is clean and intuitive to use.
-* **Home Page:**
-    * Built a basic home page with a functional "Messages" button (other buttons are currently non-clickable placeholders).
-* As of now, the LLM tries to imitate a clinician’s response.
+## Key Features:
+**Chat Interface**: Allows patients to engage in real-time messaging with clinicians.
+**MedQ Enable**: Enable or disable the MedQ feature that provides summarized medical queries.
+**High Contrast Mode**: Toggle between regular and high-contrast modes for accessibility.
+**Chat Summarization**: Get summaries of individual messages or entire chat history.
+**User Feedback**: Patients can rate the usefulness of summaries using emojis.
 
-### 2. Future Steps (Design)
+## Project Files:
+- **images**: Contains static image assets used across the application (e.g., icons, logos).
+- **App.css**: Defines global CSS styles for the main application component, ensuring consistent styling across the app.
+- **App.js**: The root component that initializes and renders the main structure of the application.
+- **App.test.js**: Contains unit tests for the `App.js` component to ensure correct functionality.
+- **HomePage.css**: Contains CSS styles specific to the layout and design of the home page.
+- **HomePage.js**: The home page component that serves as the landing page of the application, with introductory content and navigation options.
+- **Messages.css**: Defines CSS styles for the message display area, including the chat interface and message formatting.
+- **Messages.js**: Manages the logic for rendering and interacting with the messages, including chat history and user inputs.
+- **index.css**: Global CSS file that includes default styles for the application, affecting the overall layout.
+- **index.js**: The entry point of the React application, responsible for rendering the `App.js` component into the DOM.
 
-* **Server Module:** Create a separate "Server" module to handle LLM interactions and chat data loading.
-* **Accessibility:**
-    * Implement ARIA attributes for screen reader compatibility.
-    * Enhance color contrast for improved readability.
-    * Introduce color palette options for users with color blindness.
-* **Screen Reader Integration:** Explore the use of an LLM to provide narration capabilities.
+## Dependencies
+This project uses the following libraries and frameworks:
+Node.js: JavaScript runtime used for building and running the application.
+npm: Node package manager used to install and manage the app’s dependencies.
+React: A JavaScript library for building user interfaces.
+OpenAI API: For integrating GPT-3.5 to generate responses from the clinician and summarization.
+Axios (optional): For making HTTP requests if needed for backend services.
+React Router: For navigation and page routing.
+CSS/SCSS: For styling the user interface, including high contrast mode.
 
-### 3. Future Steps (Feedback and Iterative Design)
+## Installing dependencies 
+- Install Node.js and npm (based on your OS)
+  
+- OPEN AI API KEY - Register for a key at: https://openai.com/
+ 
+## Setup Instructions
+To get started with the project, follow these steps:
 
-* **Usability Testing:** Conduct usability testing with clinicians to gather feedback on the interface.
-* **Iterative Design:**  Use feedback to iteratively improve the design and address usability issues.
-* **Performance Optimization:** Optimize the summarization process for speed and efficiency.
+# 1. **Clone the Repository**
 
-### 4. Running the project
+Start by cloning this repository to your local machine.
 
-* Refer to the Readme.md inside the medq folder for detailed instructions.
+  git clone https://github.com/anushakal/MedQ.git
+
+# 2. **Install npm in server and medq (frontend)** 
+- Install Node.js and npm (Depending on your OS)
+- Open AI API key 
+- Navigate to the project folder and install the required dependencies.
+- cd messages-dashboard-app
+- npm install
+
+# 3. Set Up OpenAI API
+To interact with the OpenAI API, you need an API key.
+- Create an `.env` file in the server directory of your project and add the following:
+- Paste this ```OPENAI_API_KEY=your-api-key-here```
+- Replace "your-api-key-here" with the actual OpenAI API Key
+
+# 4. Run the Application
+Once the dependencies are installed and the API key is configured:
+
+- Open 2 terminals: for frontend and server
+- Frontend Terminal: Navigate to the /medq folder (frontend) and run `npm start`
+- Server Terminal: Navigate to the /server folder and run `node server.js`
+  
+This will start the development server and open the app in your default web browser. The app should be accessible at http://localhost:3000.
+
+## Notes:
+Ensure that the OpenAI API key handling and environment variables are securely configured.
+
