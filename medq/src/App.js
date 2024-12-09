@@ -19,5 +19,5 @@ const App = () => {
   );
 };
 
-// Exporting the App component to be used in other parts of the application
+// Exporting the App component to be used in other parts of the app
 export default App;
