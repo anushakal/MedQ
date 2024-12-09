@@ -1,7 +1,7 @@
 /* General Styling for Homepage*/
 .homepage-dashboard {
   font-family: Calibri, serif; /*Font for the web page*/
-  background-color: #afc4ec;
+  background-color: #fff;
   min-height: 100vh;
   display: flex; /*Flexbox Layout*/
   flex-direction: column;
